@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Termux Guide — современное руководство</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="page page--home">
+    <header class="site-header">
+        <div class="container nav">
+            <a class="logo" href="index.html">Termux Guide</a>
+            <button class="nav__toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links">
+                <li><a class="nav__link nav__link--active" href="index.html">Главная</a></li>
+                <li><a class="nav__link" href="install.html">Установка</a></li>
+                <li><a class="nav__link" href="commands.html">Команды</a></li>
+                <li><a class="nav__link" href="tips.html">Советы</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero__layout">
+                <div class="hero__text">
+                    <span class="badge">Termux 2024 · Полное руководство</span>
+                    <h1>Используйте Termux как полноценный Linux-инструмент на телефоне и ПК</h1>
+                    <p>Собрали всё, что нужно для комфортной работы: установка, подборка ключевых команд, оптимизация и лучшие практики. Материалы адаптированы для мобильных устройств и настольных браузеров.</p>
+                    <div class="hero__cta">
+                        <a class="btn btn--primary" href="commands.html">Каталог команд</a>
+                        <a class="btn btn--ghost" href="install.html">Пошаговая установка</a>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="stat">
+                            <span>1200+</span>
+                            Пакетов и библиотек в репозиториях Termux
+                        </div>
+                        <div class="stat">
+                            <span>15 минут</span>
+                            Среднее время настройки окружения
+                        </div>
+                        <div class="stat">
+                            <span>24/7</span>
+                            Доступ к инструментам DevOps и разработки
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="hero__terminal">
+<pre><code>$ pkg update && pkg upgrade
+$ pkg install git python
+$ termux-setup-storage
+$ ssh user@server</code></pre>
+                    </div>
+                    <div class="hero__note">
+                        <h3>Что вы получите</h3>
+                        <ul>
+                            <li>Установку без проблем с репозиториями</li>
+                            <li>Каталог команд с поиском и фильтрами</li>
+                            <li>Сценарии для автоматизации и совместной работы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Построено вокруг реального сценария использования</h2>
+                    <p>Руководство разделено на отдельные страницы. Быстро переключайтесь между установкой, справочником команд и советами, не теряя контекст и ссылок.</p>
+                </div>
+                <div class="card-grid card-grid--link">
+                    <article class="info-card">
+                        <div class="info-card__icon">⚡</div>
+                        <h3>Установка без ошибок</h3>
+                        <p>Наглядный чек-лист для Android, Windows (WSL/WSA) и эмуляторов. Каждая глава закрывает частые проблемы новичков.</p>
+                        <a class="info-card__link" href="install.html">Перейти к установке →</a>
+                    </article>
+                    <article class="info-card">
+                        <div class="info-card__icon">⌨️</div>
+                        <h3>Команды с фильтрами</h3>
+                        <p>Фильтрация по категориям, поиск по описанию, быстрый копипаст. Всё, чтобы не листать длинные списки.</p>
+                        <a class="info-card__link" href="commands.html">Открыть библиотеку команд →</a>
+                    </article>
+                    <article class="info-card">
+                        <div class="info-card__icon">🛡️</div>
+                        <h3>Практики и безопасность</h3>
+                        <p>Алиасы, SSH, резервные копии, автоматизация — собрали в отдельном разделе, чтобы не отвлекаться от справочника.</p>
+                        <a class="info-card__link" href="tips.html">Читать советы →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container split">
+                <div class="split__text">
+                    <span class="badge">Termux как рабочее окружение</span>
+                    <h2>Минимум хаоса: мы структурировали информацию по уровням</h2>
+                    <p>Каждый раздел отвечает на один главный вопрос — от первого запуска до продвинутой автоматизации. Навигация одинаковая на всех страницах, а дизайн адаптирован под мобильные устройства.</p>
+                    <ul class="list-check">
+                        <li>Устойчивое тёмное оформление с контрастом для чтения в темноте</li>
+                        <li>Карточные сетки и двухколоночные блоки для ноутбуков и ПК</li>
+                        <li>Оптимизированный контент под вертикальные экраны смартфонов</li>
+                    </ul>
+                </div>
+                <div class="split__panel">
+                    <article class="feature-card">
+                        <h3>Для разработчиков</h3>
+                        <p>Настройка Git, работа с Python, Node.js, C/C++ и доступ к удалённым сервисам через SSH и tmux.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Для DevOps и админов</h3>
+                        <p>Мониторинг, управление серверами, создание VPN-туннелей, автоматизация с cron и shell-скриптами.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Для студентов и исследователей</h3>
+                        <p>Учебные sandbox-окружения, запуск терминальных приложений, сбор данных и научные библиотеки.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-panel">
+                    <h2>Готовы улучшить рабочий процесс в Termux?</h2>
+                    <p>Следуйте последовательным шагам: установите Termux, соберите любимые инструменты, автоматизируйте рутину. Мы подготовили инструкции для каждого этапа.</p>
+                    <div>
+                        <a class="btn btn--primary" href="install.html">Начать с установки</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__content">
+            <div>
+                <a class="logo" href="index.html">Termux Guide</a>
+                <p>Сообщество энтузиастов мобильного Linux. Делитесь конфигами, скриптами и идеями в своих проектах.</p>
+            </div>
+            <div class="footer__links">
+                <a href="index.html">Главная</a>
+                <a href="install.html">Установка</a>
+                <a href="commands.html">Команды</a>
+                <a href="tips.html">Советы</a>
+            </div>
+            <div class="footer__cta">
+                <p>Хотите поделиться гайдлайнами?</p>
+                <a class="btn btn--ghost" href="mailto:hello@termux.guide">hello@termux.guide</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2024 Termux Guide. Современное руководство по мобильному Linux.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

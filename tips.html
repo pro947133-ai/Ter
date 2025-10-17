@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Советы и практики Termux — Termux Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="page page--tips">
+    <header class="site-header">
+        <div class="container nav">
+            <a class="logo" href="index.html">Termux Guide</a>
+            <button class="nav__toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links">
+                <li><a class="nav__link" href="index.html">Главная</a></li>
+                <li><a class="nav__link" href="install.html">Установка</a></li>
+                <li><a class="nav__link" href="commands.html">Команды</a></li>
+                <li><a class="nav__link nav__link--active" href="tips.html">Советы</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <header class="page-hero">
+        <div class="container">
+            <span class="badge">Опыт пользователей</span>
+            <h1>Практики, автоматизация и ответы на частые вопросы</h1>
+            <p>Здесь собраны рекомендации по безопасности, продуктивности и интеграции Termux с другими инструментами. Раздел обновляется по мере появления новых сценариев.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Лучшие практики</h2>
+                    <p>Применяйте советы из разных категорий, чтобы ускорить рутину и улучшить стабильность. Карточки легко просматривать на телефоне и на ноутбуке.</p>
+                </div>
+                <div class="tips-grid">
+                    <article class="tip-card">
+                        <h3>Создайте SSH-ключи</h3>
+                        <p>Команда <code>ssh-keygen</code> с типом <code>ed25519</code> обеспечит быстрый и безопасный доступ к серверам и Git-репозиториям.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Резервируйте конфиги</h3>
+                        <p>Соберите dotfiles в один каталог и используйте <code>tar</code> или <code>restic</code> для бэкапов в облако.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Настройте профиль оболочки</h3>
+                        <p>Добавьте алиасы, автодополнение, темы Oh My Zsh или starship — это экономит время при повседневной работе.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Работайте с редакторами</h3>
+                        <p>Используйте <code>neovim</code>, <code>helix</code> или подключайте Termux по SSH к VS Code Remote. Это удобно для больших проектов.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Автоматизируйте задачи</h3>
+                        <p>Комбинируйте <code>cron</code>, <code>bash</code>-скрипты и <code>termux-job-scheduler</code>, чтобы запускать процессы без вашего участия.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Используйте Termux:API</h3>
+                        <p>Отправляйте уведомления, фотографируйте, считывайте GPS и датчики устройства прямо из терминала.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Часто задаваемые вопросы</h2>
+                    <p>Сконцентрировали популярные вопросы сообщества и краткие ответы. Открывайте только то, что актуально именно сейчас.</p>
+                </div>
+                <div class="accordion" data-accordion>
+                    <article class="accordion__item" data-accordion-item>
+                        <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                            Где хранится домашняя директория Termux?
+                            <span class="accordion__icon">+</span>
+                        </button>
+                        <div class="accordion__content" data-accordion-content>
+                            <p>Стандартный путь — <code>/data/data/com.termux/files/home</code>. При необходимости создайте симлинки в <code>storage</code> для быстрого доступа.</p>
+                        </div>
+                    </article>
+                    <article class="accordion__item" data-accordion-item>
+                        <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                            Можно ли запускать графические приложения?
+                            <span class="accordion__icon">+</span>
+                        </button>
+                        <div class="accordion__content" data-accordion-content>
+                            <p>Да. Установите <code>termux-x11</code> или XServer XSDL. Учтите, что графика потребляет больше ресурсов и требует дополнительной настройки.</p>
+                        </div>
+                    </article>
+                    <article class="accordion__item" data-accordion-item>
+                        <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                            Как подключиться к Termux по SSH?
+                            <span class="accordion__icon">+</span>
+                        </button>
+                        <div class="accordion__content" data-accordion-content>
+                            <p>Установите <code>openssh</code>, запустите <code>sshd</code> и подключайтесь по адресу <code>ssh user@ip -p 8022</code>. Пароль задаётся через <code>passwd</code>, лучше заменить его на ключи.</p>
+                        </div>
+                    </article>
+                    <article class="accordion__item" data-accordion-item>
+                        <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                            Как обновлять Termux?
+                            <span class="accordion__icon">+</span>
+                        </button>
+                        <div class="accordion__content" data-accordion-content>
+                            <p>Используйте <code>pkg upgrade</code> для обновления пакетов. Само приложение скачивайте заново из F-Droid, когда выходит новая версия.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-panel">
+                    <h2>Продолжайте изучение с практикой</h2>
+                    <p>Комбинируйте советы с каталогом команд и пошаговым гидом. Сайт разбит на страницы, поэтому легко возвращаться к нужному разделу в один клик.</p>
+                    <div>
+                        <a class="btn btn--primary" href="commands.html">Вернуться к командам</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__content">
+            <div>
+                <a class="logo" href="index.html">Termux Guide</a>
+                <p>Сообщество энтузиастов мобильного Linux. Делитесь конфигами, скриптами и идеями в своих проектах.</p>
+            </div>
+            <div class="footer__links">
+                <a href="index.html">Главная</a>
+                <a href="install.html">Установка</a>
+                <a href="commands.html">Команды</a>
+                <a href="tips.html">Советы</a>
+            </div>
+            <div class="footer__cta">
+                <p>Есть идеи для гайда?</p>
+                <a class="btn btn--ghost" href="mailto:hello@termux.guide">hello@termux.guide</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2024 Termux Guide. Современное руководство по мобильному Linux.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

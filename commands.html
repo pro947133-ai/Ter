@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Команды Termux — Termux Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="page page--commands">
+    <header class="site-header">
+        <div class="container nav">
+            <a class="logo" href="index.html">Termux Guide</a>
+            <button class="nav__toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links">
+                <li><a class="nav__link" href="index.html">Главная</a></li>
+                <li><a class="nav__link" href="install.html">Установка</a></li>
+                <li><a class="nav__link nav__link--active" href="commands.html">Команды</a></li>
+                <li><a class="nav__link" href="tips.html">Советы</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <header class="page-hero page-hero--compact">
+        <div class="container">
+            <span class="badge">Справочник</span>
+            <h1>Команды Termux по категориям</h1>
+            <p>Поиск и фильтрация по ключевым словам и сценариям. Команды сгруппированы по системным задачам, работе с пакетами, сетью и автоматизацией.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" data-component="command-library">
+            <div class="container">
+                <div class="command-toolbar">
+                    <div class="search">
+                        <input type="search" data-role="search" placeholder="Поиск команды или описания..." />
+                    </div>
+                    <div class="filters" role="listbox" aria-label="Фильтр по категориям">
+                        <button class="chip chip--active" data-role="filter" data-category="all">Все</button>
+                        <button class="chip" data-role="filter" data-category="system">Система</button>
+                        <button class="chip" data-role="filter" data-category="packages">Пакеты</button>
+                        <button class="chip" data-role="filter" data-category="files">Файлы</button>
+                        <button class="chip" data-role="filter" data-category="network">Сеть</button>
+                        <button class="chip" data-role="filter" data-category="dev">Разработка</button>
+                        <button class="chip" data-role="filter" data-category="automation">Автоматизация</button>
+                    </div>
+                </div>
+                <div class="commands__list" data-role="command-list" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Как быстрее ориентироваться в Termux</h2>
+                    <p>Используйте горячие клавиши и расширения оболочки, чтобы ускорить работу. Комбинируйте команды из справочника с автоматизацией.</p>
+                </div>
+                <div class="tips-grid">
+                    <article class="tip-card">
+                        <h3>Горячие клавиши терминала</h3>
+                        <p>Ctrl + A/E для перемещения по строке, Ctrl + L для очистки экрана, Ctrl + R — поиск по истории.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Сеансы с tmux</h3>
+                        <p>Создавайте несколько окон и панелей, сохраняйте сессии даже после закрытия Termux.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Ускоренный ввод</h3>
+                        <p>Используйте <code>alias</code> для типовых команд, подключайте автодополнение и плагины оболочки.</p>
+                    </article>
+                    <article class="tip-card">
+                        <h3>Сборка проектов</h3>
+                        <p>Установите <code>clang</code>, <code>cmake</code>, <code>make</code> и запускайте полноценные пайплайны CI прямо на устройстве.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__content">
+            <div>
+                <a class="logo" href="index.html">Termux Guide</a>
+                <p>Сообщество энтузиастов мобильного Linux. Делитесь конфигами, скриптами и идеями в своих проектах.</p>
+            </div>
+            <div class="footer__links">
+                <a href="index.html">Главная</a>
+                <a href="install.html">Установка</a>
+                <a href="commands.html">Команды</a>
+                <a href="tips.html">Советы</a>
+            </div>
+            <div class="footer__cta">
+                <p>Ищете команды для конкретного кейса?</p>
+                <a class="btn btn--ghost" href="mailto:hello@termux.guide">hello@termux.guide</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2024 Termux Guide. Современное руководство по мобильному Linux.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
