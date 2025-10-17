@@ -15,6 +15,11 @@ const COMMANDS = [
         category: 'packages'
     },
     {
+        command: 'pkg list-all',
+        description: 'Список всех доступных пакетов в репозиториях Termux с краткими описаниями.',
+        category: 'packages'
+    },
+    {
         command: 'apt list --installed',
         description: 'Список всех установленных пакетов, аналогично Linux-дистрибутивам.',
         category: 'packages'
@@ -22,6 +27,11 @@ const COMMANDS = [
     {
         command: 'apt autoremove',
         description: 'Удаление ненужных зависимостей и очистка системы от неиспользуемых пакетов.',
+        category: 'packages'
+    },
+    {
+        command: 'pkg clean',
+        description: 'Удаление кеша менеджера пакетов и архивов для освобождения памяти.',
         category: 'packages'
     },
     {
@@ -40,6 +50,11 @@ const COMMANDS = [
         category: 'system'
     },
     {
+        command: 'termux-wake-lock',
+        description: 'Блокировка режима сна устройства, чтобы Termux не выгружался из памяти.',
+        category: 'system'
+    },
+    {
         command: 'termux-open <файл/ссылка>',
         description: 'Открытие файла или URL внешним приложением на Android.',
         category: 'system'
@@ -47,6 +62,11 @@ const COMMANDS = [
     {
         command: 'termux-battery-status',
         description: 'Показывает уровень заряда батареи и состояние питания устройства.',
+        category: 'system'
+    },
+    {
+        command: 'termux-toast "Готово"',
+        description: 'Вывод системного всплывающего уведомления прямо из терминала.',
         category: 'system'
     },
     {
@@ -100,6 +120,16 @@ const COMMANDS = [
         category: 'files'
     },
     {
+        command: 'du -sh *',
+        description: 'Быстрый анализ использования диска в текущем каталоге.',
+        category: 'files'
+    },
+    {
+        command: 'tar -czf backup.tgz <путь>',
+        description: 'Создание сжатого архива для резервных копий и переноса проектов.',
+        category: 'files'
+    },
+    {
         command: 'ssh user@host -p 8022',
         description: 'Подключение по SSH к удалённому серверу или обратно к Termux (при запущенном sshd).',
         category: 'network'
@@ -130,6 +160,16 @@ const COMMANDS = [
         category: 'network'
     },
     {
+        command: 'mosh user@host',
+        description: 'Устойчивое мобильное SSH-подключение с автоматическим восстановлением сессии.',
+        category: 'network'
+    },
+    {
+        command: 'pkg install wireguard-tools',
+        description: 'Установка инструментов для создания защищённых VPN-туннелей.',
+        category: 'network'
+    },
+    {
         command: 'python3, pip',
         description: 'Интерпретатор Python и менеджер пакетов pip для установки библиотек.',
         category: 'dev'
@@ -157,6 +197,16 @@ const COMMANDS = [
     {
         command: 'vim, neovim, nano',
         description: 'Популярные текстовые редакторы для работы с кодом и конфигурациями.',
+        category: 'dev'
+    },
+    {
+        command: 'go install <модуль>@latest',
+        description: 'Установка Go-инструментов и CLI без дополнительных менеджеров пакетов.',
+        category: 'dev'
+    },
+    {
+        command: 'proot-distro install ubuntu',
+        description: 'Развёртывание полноценного дистрибутива Linux внутри Termux для экспериментов.',
         category: 'dev'
     },
     {
@@ -322,6 +372,72 @@ function initAccordion() {
     });
 }
 
+function initTabsets() {
+    const tabsets = document.querySelectorAll('[data-component="tabset"]');
+
+    if (!tabsets.length) {
+        return;
+    }
+
+    tabsets.forEach((tabset) => {
+        const tabs = Array.from(tabset.querySelectorAll('[data-role="tab"]'));
+        const panels = Array.from(tabset.querySelectorAll('[data-role="panel"]'));
+
+        if (!tabs.length || !panels.length) {
+            return;
+        }
+
+        function activate(targetId) {
+            tabs.forEach((tab) => {
+                const isActive = tab.dataset.target === targetId;
+                tab.classList.toggle('tabset__button--active', isActive);
+                tab.setAttribute('aria-selected', String(isActive));
+                tab.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+
+            panels.forEach((panel) => {
+                const matches = panel.id === `${targetId}-panel`;
+                panel.toggleAttribute('hidden', !matches);
+            });
+        }
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.dataset.target;
+
+                if (targetId) {
+                    activate(targetId);
+                }
+            });
+
+            tab.addEventListener('keydown', (event) => {
+                const currentIndex = tabs.indexOf(tab);
+
+                if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    const nextTab = tabs[(currentIndex + 1) % tabs.length];
+                    nextTab?.focus();
+                    nextTab?.click();
+                }
+
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    const prevTab = tabs[(currentIndex - 1 + tabs.length) % tabs.length];
+                    prevTab?.focus();
+                    prevTab?.click();
+                }
+            });
+        });
+
+        const defaultTab = tabs.find((tab) => tab.dataset.default === 'true') ?? tabs[0];
+
+        if (defaultTab?.dataset.target) {
+            activate(defaultTab.dataset.target);
+        }
+    });
+}
+
 initNavigation();
 initCommandsLibrary();
 initAccordion();
+initTabsets();

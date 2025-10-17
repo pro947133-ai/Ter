@@ -72,6 +72,35 @@
         </section>
 
         <section class="section section--alt">
+            <div class="container split">
+                <div class="split__text">
+                    <span class="badge">Комбинируйте подходы</span>
+                    <h2>Организуйте рабочие процессы в одном месте</h2>
+                    <p>Соберите терминал, редактор, SSH и автоматизацию в единую систему. Termux позволяет переносить привычные инструменты с ПК на телефон и обратно.</p>
+                    <ul class="list-check">
+                        <li>Храните секреты через <code>pass</code> или <code>gopass</code>, синхронизируя их с Git</li>
+                        <li>Используйте <code>direnv</code> и <code>pyenv</code> для управления окружениями</li>
+                        <li>Добавьте уведомления Termux:API, чтобы следить за фоновыми задачами</li>
+                    </ul>
+                </div>
+                <div class="split__panel">
+                    <article class="feature-card">
+                        <h3>Работа с заметками</h3>
+                        <p>Храните Markdown-файлы в Git-репозитории, синхронизируйте через <code>git push</code>/<code>git pull</code> и редактируйте в <code>neovim</code>.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Dev-среда в кармане</h3>
+                        <p>Настройте <code>proot-distro</code> для запуска Ubuntu или Arch, чтобы протестировать сервисы без основного ПК.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Автоматизация дел</h3>
+                        <p>Планируйте напоминания через <code>termux-job-scheduler</code>, а отчёты отправляйте в Telegram-ботов и почтовые рассылки.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
             <div class="container">
                 <div class="section__header">
                     <h2>Часто задаваемые вопросы</h2>
@@ -113,6 +142,50 @@
                         <div class="accordion__content" data-accordion-content>
                             <p>Используйте <code>pkg upgrade</code> для обновления пакетов. Само приложение скачивайте заново из F-Droid, когда выходит новая версия.</p>
                         </div>
+                    </article>
+                    <article class="accordion__item" data-accordion-item>
+                        <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                            Как запускать Linux-дистрибутивы внутри Termux?
+                            <span class="accordion__icon">+</span>
+                        </button>
+                        <div class="accordion__content" data-accordion-content>
+                            <p>Установите <code>proot-distro</code>, затем выполните <code>proot-distro install ubuntu</code> и <code>proot-distro login ubuntu</code>. Получите полноценное окружение с привычными пакетами.</p>
+                        </div>
+                    </article>
+                    <article class="accordion__item" data-accordion-item>
+                        <button class="accordion__trigger" data-accordion-trigger aria-expanded="false">
+                            Как защитить данные при работе на публичном Wi‑Fi?
+                            <span class="accordion__icon">+</span>
+                        </button>
+                        <div class="accordion__content" data-accordion-content>
+                            <p>Используйте <code>wireguard</code> или <code>openvpn</code>, включите межсетевой экран <code>iptables</code> и держите Termux в <code>termux-wake-lock</code>, чтобы не потерять соединение во время туннеля.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Полезные подборки</h2>
+                    <p>Эти ресурсы помогут углубиться в конкретные темы: безопасность, автоматизация, интеграции с облаком.</p>
+                </div>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Termux Wiki — раздел Tips & Tricks</h3>
+                        <p>Официальные заметки о кастомизации, подключении к хостам и расширении API.</p>
+                        <a class="info-card__link" href="https://wiki.termux.com/wiki/Tips_and_Tricks" target="_blank" rel="noopener">Открыть раздел →</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Блог о мобильном DevOps</h3>
+                        <p>Практические заметки, как использовать Termux для мониторинга и деплоя из командировок.</p>
+                        <a class="info-card__link" href="https://medium.com/tag/termux" target="_blank" rel="noopener">Читать статьи →</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Открытые конфиги</h3>
+                        <p>Коллекция dotfiles и шаблонов <code>bashrc</code>/<code>zshrc</code> от сообщества GitHub.</p>
+                        <a class="info-card__link" href="https://github.com/topics/termux" target="_blank" rel="noopener">Посмотреть репозитории →</a>
                     </article>
                 </div>
             </div>

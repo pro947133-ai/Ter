@@ -112,6 +112,80 @@
                 </div>
             </div>
         </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Инструкции по платформам</h2>
+                    <p>Каждая система требует пары дополнительных шагов. Выберите вкладку и следуйте чек-листу. Все команды доступны в нашем справочнике.</p>
+                </div>
+                <div class="tabset" data-component="tabset">
+                    <div class="tabset__nav" role="tablist" aria-label="Инструкции по установке Termux">
+                        <button class="tabset__button" role="tab" data-role="tab" data-target="install-android" data-default="true" id="install-android" aria-controls="install-android-panel">
+                            Android
+                        </button>
+                        <button class="tabset__button" role="tab" data-role="tab" data-target="install-windows" id="install-windows" aria-controls="install-windows-panel">
+                            Windows
+                        </button>
+                        <button class="tabset__button" role="tab" data-role="tab" data-target="install-linux" id="install-linux" aria-controls="install-linux-panel">
+                            Linux
+                        </button>
+                    </div>
+                    <div class="tabset__panels">
+                        <article class="tabset__panel" role="tabpanel" data-role="panel" id="install-android-panel" aria-labelledby="install-android">
+                            <div class="tabset__panel-content">
+                                <ul class="list-check">
+                                    <li>Установите Termux и Termux:API из F-Droid, затем активируйте <code>termux-setup-storage</code>.</li>
+                                    <li>Проверьте настройки энергосбережения: добавьте Termux в исключения, чтобы фоновые процессы не завершались.</li>
+                                    <li>Используйте встроенную клавиатуру Termux или настраиваемые сочетания в Gboard для удобного ввода Ctrl/Alt.</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article class="tabset__panel" role="tabpanel" data-role="panel" id="install-windows-panel" aria-labelledby="install-windows" hidden>
+                            <div class="tabset__panel-content">
+                                <ul class="list-check">
+                                    <li>Запустите Termux в среде WSA или установите эмулятор Android (например, Android Studio) с поддержкой x86_64.</li>
+                                    <li>Свяжите Termux с основным хранилищем через общий каталог и включите синхронизацию с OneDrive/Dropbox.</li>
+                                    <li>Для WSL настройте SSH-тоннель: <code>ssh -R 8022:localhost:22 user@wsl</code>, чтобы обмениваться файлами и портами.</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article class="tabset__panel" role="tabpanel" data-role="panel" id="install-linux-panel" aria-labelledby="install-linux" hidden>
+                            <div class="tabset__panel-content">
+                                <ul class="list-check">
+                                    <li>Используйте ADB для установки Termux на устройство: <code>adb install termux.apk</code> и настройте порт-форвардинг.</li>
+                                    <li>Настройте обмен файлами через <code>adb push</code>/<code>adb pull</code> или синхронизируйте директории с помощью <code>rsync</code>.</li>
+                                    <li>Подключайте устройство к tmux-сессиям на сервере и переключайтесь между рабочими окружениями.</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container">
+                <div class="section__header section__header--narrow">
+                    <h2>Что делать при ошибках</h2>
+                    <p>Собрали типичные проблемы, с которыми сталкиваются пользователи. Следуйте рекомендациям и возвращайтесь к работе без переустановки.</p>
+                </div>
+                <div class="callout-grid">
+                    <article class="callout callout--warning">
+                        <h3>Не обновляются пакеты</h3>
+                        <p>Проверьте дату и время устройства, смените зеркала через <code>termux-change-repo</code> и повторите <code>pkg update</code>.</p>
+                    </article>
+                    <article class="callout callout--info">
+                        <h3>Недостаточно памяти</h3>
+                        <p>Очистите кеши <code>apt</code> командой <code>rm -rf $PREFIX/var/cache/apt</code> и перенесите тяжёлые проекты в подключенное хранилище.</p>
+                    </article>
+                    <article class="callout callout--success">
+                        <h3>Termux закрывается в фоне</h3>
+                        <p>Активируйте <code>termux-wake-lock</code>, настройте исключения в менеджере питания и используйте уведомление «постоянной» сессии.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">

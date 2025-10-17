@@ -132,12 +132,135 @@ $ ssh user@server</code></pre>
 
         <section class="section">
             <div class="container">
+                <div class="section__header section__header--narrow">
+                    <h2>Выбирайте сценарий под ваши задачи</h2>
+                    <p>Termux одинаково полезен инженерам, администраторам и новичкам. Мы подготовили подсказки, чтобы быстрее настроиться и использовать терминал с пользой.</p>
+                </div>
+                <div class="tabset" data-component="tabset">
+                    <div class="tabset__nav" role="tablist" aria-label="Сценарии использования Termux">
+                        <button class="tabset__button" role="tab" data-role="tab" data-target="tab-developers" data-default="true" id="tab-developers" aria-controls="tab-developers-panel">
+                            Разработчикам
+                        </button>
+                        <button class="tabset__button" role="tab" data-role="tab" data-target="tab-admins" id="tab-admins" aria-controls="tab-admins-panel">
+                            Админам и DevOps
+                        </button>
+                        <button class="tabset__button" role="tab" data-role="tab" data-target="tab-beginners" id="tab-beginners" aria-controls="tab-beginners-panel">
+                            Новичкам и студентам
+                        </button>
+                    </div>
+                    <div class="tabset__panels">
+                        <article class="tabset__panel" role="tabpanel" data-role="panel" id="tab-developers-panel" aria-labelledby="tab-developers">
+                            <div class="tabset__panel-content">
+                                <p>Соберите мобильный dev-стек: Git, Python, Node.js, компиляторы C/C++ и даже полноценные дистрибутивы через <code>proot-distro</code>. Все инструкции находятся в разделах «Установка» и «Команды».</p>
+                                <ul class="list-check">
+                                    <li>Склоните репозиторий и работайте офлайн</li>
+                                    <li>Настройте форматирование кода и автодополнение</li>
+                                    <li>Запускайте тесты и CI-сценарии прямо с телефона</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article class="tabset__panel" role="tabpanel" data-role="panel" id="tab-admins-panel" aria-labelledby="tab-admins" hidden>
+                            <div class="tabset__panel-content">
+                                <p>Termux отлично справляется с задачами мониторинга и поддержки инфраструктуры. Используйте сетевые утилиты, SSH-доступ и автоматизацию для быстрого реагирования.</p>
+                                <ul class="list-check">
+                                    <li>Проверяйте службы через <code>htop</code>, <code>iftop</code> и <code>nmap</code></li>
+                                    <li>Создавайте туннели и VPN для удалённых подключений</li>
+                                    <li>Скриптуйте рутинные проверки и бэкапы</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article class="tabset__panel" role="tabpanel" data-role="panel" id="tab-beginners-panel" aria-labelledby="tab-beginners" hidden>
+                            <div class="tabset__panel-content">
+                                <p>Удобный путь в мир Linux. Подробные пошаговые инструкции помогут понять, как работают пакеты, файловая система и автоматизация без страха сломать систему.</p>
+                                <ul class="list-check">
+                                    <li>Повторяйте команды из гайдов и сразу видьте результат</li>
+                                    <li>Освойте основы оболочки Bash и настройте свой профиль</li>
+                                    <li>Заводите учебные проекты и делитесь прогрессом</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Типовой рабочий поток с Termux</h2>
+                    <p>Следуйте шагам — от чистой установки до деплоя проектов и автоматизации. Каждый этап сопровождается ссылками и командами из нашего справочника.</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline__item">
+                        <div class="timeline__marker">1</div>
+                        <div class="timeline__body">
+                            <h3>Подготовка окружения</h3>
+                            <p>Установите Termux из проверенного источника, обновите пакеты и настройте доступ к хранилищу. Подключите dotfiles и выберите оболочку.</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__marker">2</div>
+                        <div class="timeline__body">
+                            <h3>Сбор инструментов</h3>
+                            <p>Через <code>pkg</code> и <code>pip</code> добавьте любимые утилиты: Git, Python, Node.js, сетевые инструменты. Настройте алиасы и автодополнение.</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__marker">3</div>
+                        <div class="timeline__body">
+                            <h3>Работа и автоматизация</h3>
+                            <p>Используйте SSH, tmux и cron для поддержки проектов. Подключайте Termux:API, уведомления и резервное копирование для полной автономности.</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__marker">4</div>
+                        <div class="timeline__body">
+                            <h3>Обмен знаниями</h3>
+                            <p>Создайте собственные шпаргалки, делитесь конфигурациями и собирайте обратную связь. Так вы поддерживаете своё окружение в актуальном состоянии.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
                 <div class="cta-panel">
                     <h2>Готовы улучшить рабочий процесс в Termux?</h2>
                     <p>Следуйте последовательным шагам: установите Termux, соберите любимые инструменты, автоматизируйте рутину. Мы подготовили инструкции для каждого этапа.</p>
                     <div>
                         <a class="btn btn--primary" href="install.html">Начать с установки</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt section--resources">
+            <div class="container">
+                <div class="section__header">
+                    <h2>Полезные материалы и сообщества</h2>
+                    <p>Дополняйте знания официальной документацией, проверенными блогами и русскоязычными чатами. Мы регулярно обновляем подборку.</p>
+                </div>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Документация Termux</h3>
+                        <p>Wiki и GitHub с инструкциями по API, пакетам и патчам. Подходит, если нужно погрузиться в детали.</p>
+                        <a class="info-card__link" href="https://wiki.termux.com/wiki/Main_Page" target="_blank" rel="noopener">Перейти к Wiki →</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Русскоязычное сообщество</h3>
+                        <p>Telegram-каналы и форумы, где делятся конфигами, скриптами и свежими новостями о Termux.</p>
+                        <a class="info-card__link" href="https://t.me/termux_ru" target="_blank" rel="noopener">Открыть сообщество →</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Подборки инструментов</h3>
+                        <p>Списки полезных пакетов, статей и видеоуроков по настройке dev-окружения, безопасности и автоматизации.</p>
+                        <a class="info-card__link" href="https://github.com/termux/termux-app/wiki" target="_blank" rel="noopener">Каталог инструментов →</a>
+                    </article>
+                </div>
+                <div class="callout">
+                    <h3>Поделитесь своим опытом</h3>
+                    <p>Если у вас есть полезные скрипты или инструкции, отправьте письмо на <a href="mailto:hello@termux.guide">hello@termux.guide</a> — добавим материал в следующем обновлении.</p>
                 </div>
             </div>
         </section>

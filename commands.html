@@ -56,6 +56,44 @@
             </div>
         </section>
 
+        <section class="section">
+            <div class="container">
+                <div class="section__header section__header--narrow">
+                    <h2>Собрали быстрые сценарии</h2>
+                    <p>Комбинируйте команды в зависимости от задачи — от настройки окружения до анализа сети. Каждая подборка кликабельна: просто скопируйте и адаптируйте под себя.</p>
+                </div>
+                <div class="scenario-grid">
+                    <article class="scenario-card">
+                        <h3>Быстрый старт проекта</h3>
+                        <ul>
+                            <li><code>pkg install git nodejs</code></li>
+                            <li><code>git clone &lt;repo&gt;</code></li>
+                            <li><code>npm install && npm run dev</code></li>
+                        </ul>
+                        <p>Подходит для веб-проектов и CLI-инструментов. Добавьте <code>tmux</code>, чтобы не терять сессию.</p>
+                    </article>
+                    <article class="scenario-card">
+                        <h3>Аудит сети</h3>
+                        <ul>
+                            <li><code>pkg install nmap net-tools</code></li>
+                            <li><code>ip addr</code></li>
+                            <li><code>nmap -sV &lt;подсеть&gt;</code></li>
+                        </ul>
+                        <p>Используйте в связке с <code>tmux</code> и логированием для плановых проверок инфраструктуры.</p>
+                    </article>
+                    <article class="scenario-card">
+                        <h3>Резервное копирование</h3>
+                        <ul>
+                            <li><code>pkg install rclone</code></li>
+                            <li><code>tar -czf backup.tgz ~/project</code></li>
+                            <li><code>rclone copy backup.tgz remote:termux</code></li>
+                        </ul>
+                        <p>Настройте расписание через <code>crontab</code>, чтобы копии создавались автоматически.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="section section--alt">
             <div class="container">
                 <div class="section__header">
@@ -79,6 +117,15 @@
                         <h3>Сборка проектов</h3>
                         <p>Установите <code>clang</code>, <code>cmake</code>, <code>make</code> и запускайте полноценные пайплайны CI прямо на устройстве.</p>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="callout callout--info">
+                    <h2>Совет</h2>
+                    <p>Создавайте собственные коллекции команд в файле <code>~/notes/termux.md</code> или через <code>task</code>/<code>just</code>. Так вы сможете запускать сложные сценарии одной командой.</p>
                 </div>
             </div>
         </section>
