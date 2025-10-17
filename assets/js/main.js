@@ -1,4 +1,4 @@
-const commands = [
+const COMMANDS = [
     {
         command: 'pkg update && pkg upgrade',
         description: 'Обновление списка пакетов и уже установленных пакетов до актуальных версий.',
@@ -191,16 +191,7 @@ const commands = [
     }
 ];
 
-const commandsList = document.getElementById('commands-list');
-const searchInput = document.getElementById('command-search');
-const chips = document.querySelectorAll('.chip');
-const navToggle = document.querySelector('.nav__toggle');
-const navLinks = document.querySelector('.nav__links');
-const accordionItems = document.querySelectorAll('.accordion__item');
-
-let currentCategory = 'all';
-
-const categoryLabels = {
+const CATEGORY_LABELS = {
     all: 'Все',
     system: 'Система',
     packages: 'Пакеты',
@@ -210,80 +201,127 @@ const categoryLabels = {
     automation: 'Автоматизация'
 };
 
-function renderCommands() {
-    const term = searchInput.value.trim().toLowerCase();
+function initNavigation() {
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
 
-    const filtered = commands.filter((item) => {
-        const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
-        const matchesSearch =
-            !term ||
-            item.command.toLowerCase().includes(term) ||
-            item.description.toLowerCase().includes(term);
-        return matchesCategory && matchesSearch;
-    });
-
-    if (!filtered.length) {
-        commandsList.innerHTML = `
-            <div class="command-card command-card--empty">
-                <p>Ничего не найдено. Попробуйте другой запрос или категорию.</p>
-            </div>
-        `;
+    if (!navToggle || !navLinks) {
         return;
     }
 
-    const fragment = document.createDocumentFragment();
-
-    filtered.forEach((item) => {
-        const card = document.createElement('article');
-        card.className = 'command-card';
-        card.innerHTML = `
-            <span class="command-card__badge">${categoryLabels[item.category]}</span>
-            <code>${item.command}</code>
-            <p>${item.description}</p>
-        `;
-        fragment.appendChild(card);
+    navToggle.addEventListener('click', () => {
+        const expanded = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(expanded));
     });
 
-    commandsList.innerHTML = '';
-    commandsList.appendChild(fragment);
+    navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
 }
 
-function setActiveChip(chip) {
-    chips.forEach((btn) => btn.classList.remove('chip--active'));
-    chip.classList.add('chip--active');
+function initCommandsLibrary() {
+    const library = document.querySelector('[data-component="command-library"]');
+
+    if (!library) {
+        return;
+    }
+
+    const commandsList = library.querySelector('[data-role="command-list"]');
+    const searchInput = library.querySelector('[data-role="search"]');
+    const chips = Array.from(library.querySelectorAll('[data-role="filter"]'));
+    let currentCategory = 'all';
+
+    function renderCommands() {
+        if (!commandsList) {
+            return;
+        }
+
+        const term = searchInput?.value.trim().toLowerCase() ?? '';
+
+        const filtered = COMMANDS.filter((item) => {
+            const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+            const matchesSearch =
+                !term ||
+                item.command.toLowerCase().includes(term) ||
+                item.description.toLowerCase().includes(term);
+
+            return matchesCategory && matchesSearch;
+        });
+
+        if (!filtered.length) {
+            commandsList.innerHTML = `
+                <div class="command-card command-card--empty">
+                    <p>Ничего не найдено. Попробуйте другой запрос или категорию.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        filtered.forEach((item) => {
+            const card = document.createElement('article');
+            card.className = 'command-card';
+            card.innerHTML = `
+                <span class="command-card__badge">${CATEGORY_LABELS[item.category]}</span>
+                <code>${item.command}</code>
+                <p>${item.description}</p>
+            `;
+            fragment.appendChild(card);
+        });
+
+        commandsList.innerHTML = '';
+        commandsList.appendChild(fragment);
+    }
+
+    function setActiveChip(chip) {
+        chips.forEach((btn) => btn.classList.remove('chip--active'));
+        chip.classList.add('chip--active');
+    }
+
+    chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+            currentCategory = chip.dataset.category ?? 'all';
+            setActiveChip(chip);
+            renderCommands();
+        });
+    });
+
+    searchInput?.addEventListener('input', renderCommands);
+
+    renderCommands();
 }
 
-chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-        currentCategory = chip.dataset.category;
-        setActiveChip(chip);
-        renderCommands();
+function initAccordion() {
+    const accordions = document.querySelectorAll('[data-accordion]');
+
+    if (!accordions.length) {
+        return;
+    }
+
+    accordions.forEach((accordion) => {
+        const items = accordion.querySelectorAll('[data-accordion-item]');
+
+        items.forEach((item) => {
+            const trigger = item.querySelector('[data-accordion-trigger]');
+            const content = item.querySelector('[data-accordion-content]');
+
+            if (!trigger || !content) {
+                return;
+            }
+
+            trigger.addEventListener('click', () => {
+                const isOpen = item.classList.toggle('is-open');
+                trigger.setAttribute('aria-expanded', String(isOpen));
+                content.style.maxHeight = isOpen ? `${content.scrollHeight + 32}px` : '0';
+            });
+        });
     });
-});
+}
 
-searchInput.addEventListener('input', renderCommands);
-
-navToggle.addEventListener('click', () => {
-    const expanded = navLinks.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(expanded));
-});
-
-navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-    });
-});
-
-accordionItems.forEach((item) => {
-    const trigger = item.querySelector('.accordion__trigger');
-    const content = item.querySelector('.accordion__content');
-
-    trigger.addEventListener('click', () => {
-        const isOpen = item.classList.toggle('is-open');
-        trigger.setAttribute('aria-expanded', String(isOpen));
-        content.style.maxHeight = isOpen ? `${content.scrollHeight + 40}px` : '0';
-    });
-});
-
-renderCommands();
+initNavigation();
+initCommandsLibrary();
+initAccordion();
